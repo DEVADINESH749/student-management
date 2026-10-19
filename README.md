@@ -25,6 +25,7 @@ The system provides secure authentication, student management, course management
 ## Technologies Used
 
 ### Frontend
+
 - React.js
 - JavaScript
 - HTML5
@@ -34,6 +35,7 @@ The system provides secure authentication, student management, course management
 - Lucide React
 
 ### Backend
+
 - Python
 - FastAPI
 - SQLAlchemy
@@ -41,13 +43,16 @@ The system provides secure authentication, student management, course management
 - Uvicorn
 
 ### Database
+
 - SQLite
 
 ### API Testing
+
 - Postman
 - Swagger UI
 
 ### Development Tools
+
 - Visual Studio Code
 - Git
 - GitHub
@@ -61,7 +66,7 @@ The application is divided into independent services:
 - **Course Service** - Handles course management and student course enrollment.
 - **API Gateway** - Provides a single entry point for frontend requests and routes requests to the appropriate backend service.
 
-### Service Ports
+## Service Ports
 
 | Service | Port |
 |---|---:|
@@ -81,7 +86,9 @@ student-management/
 +-- student-service/
 +-- course-service/
 +-- postman/
++-- .gitignore
 +-- README.md
+```
 
 ## API Endpoints
 
@@ -114,3 +121,86 @@ student-management/
 | DELETE | `/courses/{course_id}` | Delete a course |
 | POST | `/courses/{course_id}/students/{student_id}` | Assign a student to a course |
 | GET | `/courses/{course_id}/students` | View enrolled students |
+
+## Running the Project
+
+Start each service in a separate PowerShell terminal.
+
+### 1. Auth Service
+
+```powershell
+cd auth-service
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn app.main:app --reload --port 8001
+```
+
+### 2. Student Service
+
+```powershell
+cd student-service
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn app.main:app --reload --port 8002
+```
+
+### 3. Course Service
+
+```powershell
+cd course-service
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn app.main:app --reload --port 8003
+```
+
+### 4. API Gateway
+
+```powershell
+cd api-gateway
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn app.main:app --reload --port 8000
+```
+
+### 5. Frontend
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Open the application:
+
+```text
+http://localhost:5173
+```
+
+## Swagger API Documentation
+
+Swagger documentation is available at:
+
+- API Gateway: `http://127.0.0.1:8000/docs`
+- Auth Service: `http://127.0.0.1:8001/docs`
+- Student Service: `http://127.0.0.1:8002/docs`
+- Course Service: `http://127.0.0.1:8003/docs`
+
+## Testing
+
+The following features have been tested:
+
+- User registration
+- User login
+- JWT authentication
+- Current user authentication
+- Student creation
+- Student retrieval
+- Student update
+- Student deletion
+- Course creation
+- Course retrieval
+- Course update
+- Course deletion
+- API Gateway routing
+- React frontend integration
+- Postman API testing
+
+## Project Status
+
+The Student Management System is completed with authentication, student management, course management, API Gateway integration, and React frontend functionality.
