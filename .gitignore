@@ -15,9 +15,15 @@ env/
 node_modules/
 dist/
 
+# Postman local dependencies
+postman/node_modules/
+
 # VS Code
 .vscode/
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# Generated Postman reports
+postman/reports/
